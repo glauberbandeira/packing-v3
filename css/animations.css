@@ -1,0 +1,79 @@
+/* V3 MOTION PASS — lightweight, scroll-led animation */
+html{scroll-behavior:smooth;scroll-padding-top:114px}
+.hero-img{will-change:transform}.hero-img:before{will-change:transform}
+
+section,.reveal{contain:layout paint}
+[data-motion]{opacity:1;transform:none;transition:opacity .75s var(--ease),transform .75s var(--ease);will-change:opacity,transform}
+.motion-ready [data-motion]{opacity:0;transform:translate3d(0,26px,0)}
+.motion-ready [data-motion].in{opacity:1;transform:none}
+[data-motion="up"]{transform:translate3d(0,38px,0)}
+[data-motion="left"]{transform:translate3d(42px,0,0)}
+[data-motion="right"]{transform:translate3d(-42px,0,0)}
+[data-motion="scale"]{transform:scale(.965);transform-origin:center}
+[data-motion="scale"].in{transform:scale(1)}
+.motion-stagger>*{opacity:0;transform:translateY(20px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.motion-stagger.in>*{opacity:1;transform:none}
+.motion-stagger.in>*:nth-child(2){transition-delay:.06s}.motion-stagger.in>*:nth-child(3){transition-delay:.12s}.motion-stagger.in>*:nth-child(4){transition-delay:.18s}
+.btn:after{content:"";position:absolute;inset:0;background:currentColor;transform:translateX(-105%);transition:transform .45s var(--ease);opacity:.08}
+.btn:hover:after{transform:translateX(0)}
+.btn span,.btn{isolation:isolate}
+.reveal-img{will-change:transform}.business-photo,.about-photo,.service-feature .photo{will-change:background-position}
+.hero-stamp{animation:floatStamp 5s ease-in-out infinite}
+@keyframes floatStamp{0%,100%{transform:rotate(8deg) translateY(0)}50%{transform:rotate(5deg) translateY(-8px)}}
+.manifesto h2{animation:none}
+.step,.card,.segment-card,.area,.quote,.logos div{will-change:transform}
+.step:hover{transform:translateX(6px)}
+.card:hover{transform:translate3d(0,-9px,0) scale(1.01)}
+.segment-card:hover{transform:translateY(-4px)}
+.area{transition:transform .35s var(--ease),background .35s var(--ease)}.area:hover{transform:translateY(-5px);background:#ece8df}
+.logos div{transition:transform .35s var(--ease),background .35s,color .35s}.logos div:hover{transform:translateY(-4px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}[data-motion],.motion-stagger>*{opacity:1!important;transform:none!important;transition:none!important}.hero-img:before,.hero-stamp,.hero-copy{animation:none!important}.card,.step,.segment-card,.area,.logos div{transform:none!important}}
+@media(max-width:620px){[data-motion="left"],[data-motion="right"]{transform:translate3d(0,24px,0)}.step:hover{transform:none}.card:hover{transform:translateY(-5px)}}
+
+
+/* V4.1 — IMAGE + CLICK REVEAL UPDATE */
+.hero-img{background:#252421;isolation:isolate}
+.hero-img>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.045);animation:heroPhotoIn 1.2s var(--ease) forwards;filter:saturate(.92)}
+.hero-img:before{background:linear-gradient(90deg,#0005,#0000 70%);z-index:1;transform:none;animation:none}
+.hero-img:after{z-index:2}
+.hero-card,.hero-stamp{z-index:4}
+@keyframes heroPhotoIn{to{transform:scale(1)}}
+.reveal-story{min-height:115vh}
+.reveal-stage{cursor:pointer}
+.reveal-stage:focus-visible{outline:2px solid #fff;outline-offset:5px}
+.reveal-layer{transition:opacity .7s var(--ease),transform .9s var(--ease),filter .7s var(--ease)}
+.reveal-before{background-image:linear-gradient(90deg,#0008,#0001 70%),url("https://www.interstateremovalcompany.com.au/images/bunbury-packing-and-preparing-for-interstate-move.webp");opacity:1;transform:scale(1)}
+.reveal-after{background-image:linear-gradient(90deg,#0003,#0000 70%),url("https://www.bhaiyajishiftingwale.com/images/g_packing.png");clip-path:none;opacity:0;transform:scale(1.045);filter:saturate(.9)}
+.reveal-before.active{opacity:1;transform:scale(1)}
+.reveal-after.active{opacity:1;transform:scale(1);z-index:2}
+.reveal-before:not(.active){opacity:0;transform:scale(.985)}
+.reveal-after:not(.active){opacity:0;transform:scale(1.045)}
+.reveal-layer span{z-index:2}
+.reveal-switch{position:absolute;z-index:8;right:4%;top:5%;display:flex;border:1px solid #ffffff45;background:#151513b8;backdrop-filter:blur(8px);padding:3px}
+.reveal-switch button{border:0;background:transparent;color:#fff;padding:9px 12px;font-size:9px;font-weight:700;letter-spacing:.13em;cursor:pointer;opacity:.55;transition:opacity .25s,background .25s}
+.reveal-switch button.active{opacity:1;background:#fff;color:#151513}
+.reveal-divider{display:none}
+.reveal-meter>div{background:#fff4}
+.reveal-meter i{width:0;transition:width .7s var(--ease)}
+.reveal-stage.is-packed .reveal-meter i{width:100%}
+.reveal-hint{transition:opacity .3s}
+.reveal-stage.is-packed .reveal-hint{opacity:.75}
+@media(max-width:620px){.reveal-story{min-height:100vh}.reveal-switch{right:6%;top:5%}.reveal-stage{min-height:440px}.reveal-copy{bottom:8%}.hero-img>img{transform:scale(1.02)} }
+
+/* V4 — SIGNATURE PACKING REVEAL */
+.reveal-story{background:var(--ink);color:var(--white);padding:0 5vw 6vw;min-height:185vh;position:relative}
+.reveal-story:before{display:none}
+.reveal-sticky{position:sticky;top:114px;height:calc(100vh - 114px);display:flex;flex-direction:column;justify-content:center}
+.reveal-stage{height:min(74vh,780px);min-height:500px;position:relative;overflow:hidden;background:#222;border:1px solid #ffffff14;box-shadow:0 35px 90px #0005}
+.reveal-layer{position:absolute;inset:0;background-position:center;background-size:cover}
+.reveal-before{background-image:linear-gradient(90deg,#000b,#0002),url("https://www.interstateremovalcompany.com.au/images/bunbury-packing-and-preparing-for-interstate-move.webp");filter:saturate(.7) contrast(.95)}
+.reveal-after{background-image:linear-gradient(90deg,#0003,#0000 70%),url("https://www.bhaiyajishiftingwale.com/images/g_packing.png");clip-path:inset(0 0 0 52%);transition:clip-path .08s linear}
+.reveal-layer span{position:absolute;top:5%;font:700 10px/1 "DM Sans",sans-serif;letter-spacing:.18em}
+.reveal-before span{left:4%}.reveal-after span{right:4%}
+.reveal-divider{position:absolute;top:0;bottom:0;left:52%;width:1px;background:#fff;box-shadow:0 0 28px #000;z-index:4;pointer-events:none;transition:left .08s linear}
+.reveal-divider i{position:absolute;top:50%;left:50%;width:42px;height:42px;border:1px solid #fff;border-radius:50%;transform:translate(-50%,-50%);background:#151513e8;backdrop-filter:blur(5px)}
+.reveal-divider i:before,.reveal-divider i:after{content:"";position:absolute;top:50%;width:8px;height:1px;background:#fff}.reveal-divider i:before{left:9px}.reveal-divider i:after{right:9px}
+.reveal-copy{position:absolute;z-index:5;left:4%;bottom:7%;max-width:510px;text-shadow:0 3px 25px #0009}.reveal-kicker{font-size:10px;letter-spacing:.15em;opacity:.7;margin-bottom:15px}.reveal-copy h3{font:700 clamp(38px,5vw,72px)/.9 Manrope;letter-spacing:-.065em;margin:0}.reveal-copy h3 em{font-family:Georgia,serif;font-weight:400}.reveal-copy p{color:#d0cbc1;max-width:410px;margin:20px 0 22px}.reveal-meter{display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:.1em}.reveal-meter>div{width:130px;height:2px;background:#fff4;overflow:hidden}.reveal-meter i{display:block;height:100%;width:52%;background:#fff;transform-origin:left}.reveal-hint{position:absolute;z-index:5;right:4%;bottom:7%;font-size:9px;letter-spacing:.14em;opacity:.65}.reveal-cap{display:flex;justify-content:space-between;padding-top:14px;font-size:10px;text-transform:uppercase;letter-spacing:.09em}.reveal-cap b{font:400 15px Georgia,serif}
+
+@media(max-width:900px){.reveal-story{min-height:165vh;padding:0 6vw 12vw}.reveal-sticky{top:82px;height:calc(100vh - 82px)}.reveal-stage{height:68vh;min-height:470px}.reveal-copy{left:6%;bottom:8%;right:6%}.reveal-hint{right:6%;top:6%;bottom:auto}.reveal-cap{padding-top:12px}}
+@media(max-width:620px){.reveal-story{min-height:155vh}.reveal-sticky{top:82px;height:calc(100vh - 82px)}.reveal-stage{height:64vh;min-height:420px}.reveal-copy h3{font-size:clamp(36px,11vw,56px)}.reveal-copy p{font-size:14px;max-width:310px}.reveal-divider i{width:36px;height:36px}.reveal-meter>div{width:90px}.reveal-layer span{top:6%;font-size:8px}.reveal-hint{font-size:8px}.reveal-cap{flex-direction:column;gap:8px}}
